@@ -1,0 +1,247 @@
+/* ===========================
+
+   EMDO 12th Anniversary
+
+   style.css
+
+=========================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:
+
+    "Hiragino Kaku Gothic ProN",
+
+    "Yu Gothic",
+
+    sans-serif;
+
+    background:url("images/bg.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+}
+
+/* 背景を暗くする */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.45);
+
+}
+
+/* メイン */
+
+.overlay{
+
+    position:relative;
+
+    z-index:1;
+
+    width:90%;
+
+    max-width:500px;
+
+    text-align:center;
+
+    backdrop-filter:blur(6px);
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:25px;
+
+    padding:40px 25px;
+
+    box-shadow:
+
+    0 10px 40px rgba(0,0,0,.35);
+
+}
+
+/* タイトル */
+
+h1{
+
+    font-size:40px;
+
+    letter-spacing:3px;
+
+    margin-bottom:10px;
+
+}
+
+h2{
+
+    font-weight:300;
+
+    margin-bottom:30px;
+
+    color:#F5D97A;
+
+}
+
+p{
+
+    line-height:1.9;
+
+    margin-bottom:25px;
+
+}
+
+/* ボタン */
+
+button{
+
+    width:100%;
+
+    padding:18px;
+
+    margin-top:20px;
+
+    font-size:22px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#D4AF37;
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:scale(1.04);
+
+    background:#E2BE4D;
+
+}
+
+/* ガチャ */
+
+#capsule{
+
+    font-size:110px;
+
+    margin:35px 0;
+
+}
+
+/* メッセージ */
+
+#message{
+
+    margin-top:25px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:#FFE17A;
+
+}
+
+/* 回転 */
+
+.spin{
+
+    animation:spin .12s infinite;
+
+}
+
+@keyframes spin{
+
+    0%{
+
+        transform:rotate(-8deg);
+
+    }
+
+    50%{
+
+        transform:rotate(8deg);
+
+    }
+
+    100%{
+
+        transform:rotate(-8deg);
+
+    }
+
+}
+
+/* スマホ */
+
+@media(max-width:480px){
+
+h1{
+
+    font-size:32px;
+
+}
+
+h2{
+
+    font-size:20px;
+
+}
+
+button{
+
+    font-size:20px;
+
+}
+
+#capsule{
+
+    font-size:90px;
+
+}
+
+}
