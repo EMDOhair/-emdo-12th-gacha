@@ -1,10 +1,8 @@
-/* ===========================
+/* =========================
 
    EMDO 12th Anniversary
 
-   style.css
-
-=========================== */
+========================= */
 
 *{
 
@@ -20,227 +18,305 @@ body{
 
     font-family:
 
-    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
 
     "Yu Gothic",
 
     sans-serif;
 
-    background:url("images/bg.jpg");
+    background:
 
-    background-size:cover;
+    linear-gradient(
 
-    background-position:center;
+    180deg,
 
-    background-repeat:no-repeat;
+    #fffef8,
 
-    height:100vh;
+    #fff7df);
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    color:white;
-
-}
-
-/* 背景を暗くする */
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    height:100%;
-
-    background:rgba(0,0,0,.45);
-
-}
-
-/* メイン */
-
-.overlay{
-
-    position:relative;
-
-    z-index:1;
-
-    width:90%;
-
-    max-width:500px;
+    color:#333;
 
     text-align:center;
 
-    backdrop-filter:blur(6px);
+    min-height:100vh;
 
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.2);
-
-    border-radius:25px;
-
-    padding:40px 25px;
-
-    box-shadow:
-
-    0 10px 40px rgba(0,0,0,.35);
+    overflow-x:hidden;
 
 }
 
-/* タイトル */
+/* キラキラ背景 */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+background-image:
+
+radial-gradient(circle,#ffffff 1px,transparent 1px),
+
+radial-gradient(circle,#ffe48c 1px,transparent 1px);
+
+background-size:
+
+80px 80px,
+
+120px 120px;
+
+opacity:.45;
+
+animation:
+
+sparkle 18s linear infinite;
+
+}
+
+@keyframes sparkle{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+100%{
+
+transform:translateY(-120px);
+
+}
+
+}
+
+/* ================= */
+
+.overlay{
+
+padding:40px 20px;
+
+}
+
+.container{
+
+max-width:500px;
+
+margin:auto;
+
+background:white;
+
+border-radius:24px;
+
+padding:35px;
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.12);
+
+}
+
+/* ================= */
 
 h1{
 
-    font-size:40px;
+font-size:34px;
 
-    letter-spacing:3px;
+margin-bottom:10px;
 
-    margin-bottom:10px;
+color:#c89b2d;
 
 }
 
 h2{
 
-    font-weight:300;
+font-size:22px;
 
-    margin-bottom:30px;
+margin-bottom:30px;
 
-    color:#F5D97A;
-
-}
-
-p{
-
-    line-height:1.9;
-
-    margin-bottom:25px;
+font-weight:400;
 
 }
 
-/* ボタン */
+/* ================= */
 
 button{
 
-    width:100%;
+background:
 
-    padding:18px;
+linear-gradient(
 
-    margin-top:20px;
+135deg,
 
-    font-size:22px;
+#f7d774,
 
-    border:none;
+#c89b2d);
 
-    border-radius:999px;
+border:none;
 
-    background:#D4AF37;
+color:white;
 
-    color:white;
+padding:
 
-    font-weight:bold;
+18px
 
-    cursor:pointer;
+45px;
 
-    transition:.3s;
+font-size:22px;
+
+border-radius:50px;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:
+
+0 10px 25px rgba(200,155,45,.35);
 
 }
 
 button:hover{
 
-    transform:scale(1.04);
+transform:
 
-    background:#E2BE4D;
+translateY(-3px)
 
-}
-
-/* ガチャ */
-
-#capsule{
-
-    font-size:110px;
-
-    margin:35px 0;
+scale(1.03);
 
 }
 
-/* メッセージ */
+button:active{
 
-#message{
-
-    margin-top:25px;
-
-    font-size:22px;
-
-    font-weight:bold;
-
-    color:#FFE17A;
+transform:scale(.97);
 
 }
 
-/* 回転 */
+/* ================= */
 
-.spin{
+.result{
 
-    animation:spin .12s infinite;
+margin-top:40px;
 
-}
+display:none;
 
-@keyframes spin{
-
-    0%{
-
-        transform:rotate(-8deg);
-
-    }
-
-    50%{
-
-        transform:rotate(8deg);
-
-    }
-
-    100%{
-
-        transform:rotate(-8deg);
-
-    }
+animation:fade .4s;
 
 }
 
-/* スマホ */
+@keyframes fade{
 
-@media(max-width:480px){
+from{
+
+opacity:0;
+
+transform:
+
+translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+}
+
+}
+
+/* ================= */
+
+.result img{
+
+width:220px;
+
+max-width:100%;
+
+margin-top:20px;
+
+border-radius:20px;
+
+box-shadow:
+
+0 15px 35px rgba(0,0,0,.15);
+
+}
+
+/* ================= */
+
+.result h3{
+
+font-size:34px;
+
+margin-top:20px;
+
+color:#c89b2d;
+
+}
+
+/* ================= */
+
+.result p{
+
+margin-top:15px;
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+/* ================= */
+
+.footer{
+
+margin-top:50px;
+
+font-size:13px;
+
+color:#888;
+
+}
+
+/* ================= */
+
+@media(max-width:600px){
+
+.container{
+
+padding:25px;
+
+}
 
 h1{
 
-    font-size:32px;
-
-}
-
-h2{
-
-    font-size:20px;
+font-size:28px;
 
 }
 
 button{
 
-    font-size:20px;
+width:100%;
+
+font-size:20px;
 
 }
 
-#capsule{
+.result img{
 
-    font-size:90px;
+width:180px;
 
 }
 
