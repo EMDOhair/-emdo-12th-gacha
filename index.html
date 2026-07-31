@@ -35,6 +35,70 @@ width:100%;
 height:100%;
 
 overflow:hidden;
+
+background:#000;
+
+font-family:sans-serif;
+button{
+width:100%;
+padding:15px;
+font-size:20px;
+border:none;
+border-radius:12px;
+}
+
+#resetConfirm{
+background:#d60000;
+color:#fff;
+font-weight:bold;
+}
+
+#resetCancel{
+margin-top:15px;
+background:#777;
+color:#fff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="app">
+
+<div id="topScreen" class="screen active">
+
+<img
+id="topImage"
+src="top.png.PNG"
+alt="TOP">
+
+<div id="adminArea"></div>
+
+</div>
+
+<div id="animation" class="screen">
+
+<div id="roulette">
+🎰🎰🎰
+</div>
+
+<div id="message">
+抽選中…
+</div>
+
+</div>
+
+<div id="resultScreen" class="screen">
+
+<img
+id="resultImage"
+src=""
+alt="Result">
+
+</div>
+
 <div id="resetOverlay">
 
 <div id="resetBox">
@@ -42,25 +106,17 @@ overflow:hidden;
 <h2>管理者メニュー</h2>
 
 <input
-
 type="password"
-
 id="password"
-
 maxlength="4"
-
-placeholder="1212">
+placeholder="パスコード">
 
 <button id="resetConfirm">
-
 リセットする
-
 </button>
 
 <button id="resetCancel">
-
 キャンセル
-
 </button>
 
 </div>
@@ -71,36 +127,92 @@ placeholder="1212">
 
 <script>
 
-const topScreen=document.ge
+const topScreen=document.getElementById("topScreen");
+const animation=document.getElementById("animation");
+const resultScreen=document.getElementById("resultScreen");
+const resultImage=document.getElementById("resultImage");
+
+const adminArea=document.getElementById("adminArea");
+
+const resetOverlay=document.getElementById("resetOverlay");
+const password=document.getElementById("password");
+const resetConfirm=document.getElementById("resetConfirm");
+const resetCancel=document.getElementById("resetCancel");
+
+let playing=false;
+
+let drawCount=parseInt(
+localStorage.getItem("drawCount")||"0"
+);
+
+const prizes={
+
+1:"prize2.png.PNG",
+9:"prize3.png.PNG",
+18:"prize2.png.PNG",
+26:"prize3.png.PNG",
+37:"prize3.png.PNG",
+46:"prize2.png.PNG",
+55:"prize1.png.PNG",
+61:"prize3.png.PNG",
+68:"prize3.png.PNG",
+77:"prize2.png.PNG",
+84:"prize3.png.PNG",
+92:"prize2.png.PNG",
+98:"prize3.png.PNG"
+
+};
+
+function showScreen(screen){
+
+document
+.querySelectorAll(".screen")
+.forEach(s=>s.classList.remove("active"));
+
+screen.classList.add("active");
+
+}
+
+function getPrize(){
+
+drawCount++;
+
+localStorage.setItem("drawCount",drawCount);
+
+return prizes[drawCount]||"prize4.png.PNG";
+
+}
 function startGacha(){
 
-    if(playing) return;
+if(playing)return;
 
-    playing=true;
+playing=true;
 
-    showScreen(animation);
+showScreen(animation);
 
-    setTimeout(()=>{
+setTimeout(()=>{
 
-        resultImage.src=getPrize();
+const prize=getPrize();
 
-        showScreen(resultScreen);
+resultImage.src=prize;
 
-        playing=false;
+showScreen(resultScreen);
 
-    },2500);
+playing=false;
+
+},2500);
 
 }
 
 topScreen.addEventListener("click",()=>{
 
-    startGacha();
+startGacha();
 
 });
 
 resultImage.addEventListener("click",()=>{
 
-    showScreen(topScreen);
+showScreen(topScreen);
 
 });
 
@@ -110,62 +222,61 @@ let adminTimer;
 
 adminArea.addEventListener("click",(e)=>{
 
-    e.stopPropagation();
+e.stopPropagation();
 
-    adminTap++;
+adminTap++;
 
-    clearTimeout(adminTimer);
+clearTimeout(adminTimer);
 
-    adminTimer=setTimeout(()=>{
+adminTimer=setTimeout(()=>{
 
-        adminTap=0;
+adminTap=0;
 
-    },1500);
+},1500);
 
-    if(adminTap>=5){
+if(adminTap>=5){
 
-        adminTap=0;
+adminTap=0;
 
-        resetOverlay.style.display="flex";
+resetOverlay.style.display="flex";
 
-        password.value="";
+password.value="";
 
-    }
+}
 
 });
 
 resetCancel.addEventListener("click",()=>{
 
-    resetOverlay.style.display="none";
+resetOverlay.style.display="none";
 
 });
 
 resetConfirm.addEventListener("click",()=>{
 
-    if(password.value==="1212"){
+if(password.value==="1212"){
 
-        if(confirm("抽選回数をリセットしますか？")){
+if(confirm("抽選回数をリセットしますか？")){
 
-            drawCount=0;
+drawCount=0;
 
-            localStorage.setItem("drawCount","0");
+localStorage.setItem("drawCount","0");
 
-            resetOverlay.style.display="none";
+resetOverlay.style.display="none";
 
-            alert("リセットしました");
+alert("リセットしました！");
 
-        }
+}
 
-    }else{
+}else{
 
-        alert("パスコードが違います");
+alert("パスコードが違います");
 
-    }
+}
 
 });
 
 </script>
 
 </body>
-
 </html>
