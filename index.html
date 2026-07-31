@@ -457,3 +457,106 @@ document
 screen.classList.add("active");
 
 }
+function getPrize(){
+
+    drawCount++;
+
+    localStorage.setItem("drawCount", drawCount);
+
+    return prizes[drawCount] || "prize4.png.PNG";
+
+}
+
+function startGacha(){
+
+    if(playing) return;
+
+    playing = true;
+
+    nextButton.classList.remove("show");
+
+    showScreen(animation);
+
+    setTimeout(()=>{
+
+        const prize = getPrize();
+
+        resultImage.src = prize;
+
+        showScreen(resultScreen);
+
+        nextButton.classList.add("show");
+
+        playing = false;
+
+    },2500);
+
+}
+topScreen.addEventListener("click",()=>{
+
+    startGacha();
+
+});
+nextButton.addEventListener("click",()=>{
+
+    showScreen(topScreen);
+
+});
+let pressTimer;
+
+topScreen.addEventListener("touchstart",()=>{
+
+    pressTimer = setTimeout(()=>{
+
+        resetOverlay.style.display="flex";
+
+        password.value="";
+
+    },5000);
+
+});
+
+topScreen.addEventListener("touchend",()=>{
+
+    clearTimeout(pressTimer);
+
+});
+
+topScreen.addEventListener("touchmove",()=>{
+
+    clearTimeout(pressTimer);
+
+});
+resetCancel.addEventListener("click",()=>{
+
+    resetOverlay.style.display="none";
+
+});
+resetConfirm.addEventListener("click",()=>{
+
+    if(password.value==="1212"){
+
+        if(confirm("抽選回数をリセットしますか？")){
+
+            drawCount = 0;
+
+            localStorage.setItem("drawCount","0");
+
+            alert("リセットしました！");
+
+            resetOverlay.style.display="none";
+
+        }
+
+    }else{
+
+        alert("パスコードが違います");
+
+    }
+
+});
+</script>
+
+</body>
+
+</html>
