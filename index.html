@@ -346,11 +346,7 @@ src=""
 
 alt="Result">
 
-<button id="nextButton">
 
-次のお客様へ
-
-</button>
 
 </div>
 
@@ -400,7 +396,7 @@ const resultScreen=document.getElementById("resultScreen");
 
 const resultImage=document.getElementById("resultImage");
 
-const nextButton=document.getElementById("nextButton");
+
 
 const resetOverlay=document.getElementById("resetOverlay");
 
@@ -473,7 +469,7 @@ function startGacha(){
 
     playing = true;
 
-    nextButton.classList.remove("show");
+
 
     showScreen(animation);
 
@@ -485,7 +481,7 @@ function startGacha(){
 
         showScreen(resultScreen);
 
-        nextButton.classList.add("show");
+
 
         playing = false;
 
@@ -496,8 +492,11 @@ topScreen.addEventListener("click",()=>{
 
     startGacha();
 
-});
-nextButton.addEventListener("click",()=>{
+
+
+
+
+resultImage.addEventListener("click",()=>{
 
     showScreen(topScreen);
 
