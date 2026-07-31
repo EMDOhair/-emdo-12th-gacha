@@ -355,3 +355,105 @@ alt="Result">
 </div>
 
 <div id="resetOverlay">
+<div id="resetBox">
+
+<h2>
+
+管理者メニュー
+
+</h2>
+
+<input
+
+type="password"
+
+id="password"
+
+maxlength="4"
+
+placeholder="4桁パスコード">
+
+<button id="resetConfirm">
+
+リセットする
+
+</button>
+
+<button id="resetCancel">
+
+キャンセル
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const topScreen=document.getElementById("topScreen");
+
+const animation=document.getElementById("animation");
+
+const resultScreen=document.getElementById("resultScreen");
+
+const resultImage=document.getElementById("resultImage");
+
+const nextButton=document.getElementById("nextButton");
+
+const resetOverlay=document.getElementById("resetOverlay");
+
+const password=document.getElementById("password");
+
+const resetConfirm=document.getElementById("resetConfirm");
+
+const resetCancel=document.getElementById("resetCancel");
+
+let drawCount=
+
+parseInt(localStorage.getItem("drawCount")||"0");
+
+let playing=false;
+
+const prizes={
+
+1:"prize2.png.PNG",
+
+9:"prize3.png.PNG",
+
+18:"prize2.png.PNG",
+
+26:"prize3.png.PNG",
+
+37:"prize3.png.PNG",
+
+46:"prize2.png.PNG",
+
+55:"prize1.png.PNG",
+
+61:"prize3.png.PNG",
+
+68:"prize3.png.PNG",
+
+77:"prize2.png.PNG",
+
+84:"prize3.png.PNG",
+
+92:"prize2.png.PNG",
+
+98:"prize3.png.PNG"
+
+};
+
+function showScreen(screen){
+
+document
+
+.querySelectorAll(".screen")
+
+.forEach(s=>s.classList.remove("active"));
+
+screen.classList.add("active");
+
+}
