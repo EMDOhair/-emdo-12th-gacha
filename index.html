@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="ja">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 
 <title>EMDO 12周年ガチャ</title>
@@ -13,32 +10,122 @@
 <style>
 
 *{
-
 margin:0;
-
 padding:0;
-
 box-sizing:border-box;
-
 -webkit-tap-highlight-color:transparent;
-
 user-select:none;
-
 }
 
 html,
-
 body{
-
 width:100%;
-
 height:100%;
-
 overflow:hidden;
-
 background:#000;
-
 font-family:sans-serif;
+}
+
+#app{
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+}
+
+.screen{
+position:absolute;
+left:0;
+top:0;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+background:#000;
+}
+
+.screen.active{
+display:flex;
+}
+
+.screen img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+#animation{
+flex-direction:column;
+color:#fff;
+}
+
+#roulette{
+font-size:48px;
+letter-spacing:10px;
+animation:flash .18s infinite;
+}
+
+#message{
+margin-top:25px;
+font-size:24px;
+font-weight:bold;
+}
+
+@keyframes flash{
+0%{opacity:1;transform:scale(1);}
+50%{opacity:.2;transform:scale(1.08);}
+100%{opacity:1;transform:scale(1);}
+}
+
+#adminArea{
+position:absolute;
+left:0;
+top:0;
+width:60px;
+height:60px;
+z-index:100;
+}
+
+#resetOverlay{
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,.85);
+z-index:999;
+}
+
+#resetBox{
+width:85%;
+max-width:340px;
+background:#fff;
+padding:30px;
+border-radius:18px;
+text-align:center;
+}
+
+#resetBox h2{
+margin-bottom:20px;
+color:#222;
+font-size:24px;
+}
+
+#password{
+width:100%;
+padding:15px;
+font-size:24px;
+text-align:center;
+letter-spacing:8px;
+border:2px solid #ccc;
+border-radius:12px;
+margin-bottom:20px;
+}
 button{
 width:100%;
 padding:15px;
