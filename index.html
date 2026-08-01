@@ -50,7 +50,14 @@ background:#000;
 display:flex;
 }
 
-.screen img{
+#topImage{
+width:100%;
+height:100%;
+object-fit:contain;
+background:#000;
+}
+
+#resultImage{
 width:100%;
 height:100%;
 object-fit:cover;
@@ -60,7 +67,13 @@ object-fit:cover;
 flex-direction:column;
 color:#fff;
 }
-
+#gachaMachine{
+width:260px;
+max-width:75%;
+height:auto;
+display:block;
+margin:0 auto 30px;
+}
 #roulette{
 font-size:48px;
 letter-spacing:10px;
@@ -167,9 +180,10 @@ alt="TOP">
 
 <div id="animation" class="screen">
 
-<div id="roulette">
-🎰🎰🎰
-</div>
+<img
+id="gachaMachine"
+src="gacha_machine.png.PNG"
+alt="ガチャマシン">
 
 <div id="message">
 抽選中…
