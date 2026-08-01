@@ -128,7 +128,13 @@ margin-bottom:20px;
 color:#222;
 font-size:24px;
 }
-
+#countInfo{
+margin:15px 0 20px;
+font-size:22px;
+font-weight:bold;
+color:#444;
+line-height:1.6;
+}
 #password{
 width:100%;
 padding:15px;
@@ -205,7 +211,7 @@ alt="Result">
 <div id="resetBox">
 
 <h2>管理者メニュー</h2>
-
+<p id="countInfo"></p>
 <input
 type="password"
 id="password"
@@ -237,6 +243,7 @@ const adminArea=document.getElementById("adminArea");
 
 const resetOverlay=document.getElementById("resetOverlay");
 const password=document.getElementById("password");
+const countInfo=document.getElementById("countInfo");
 const resetConfirm=document.getElementById("resetConfirm");
 const resetCancel=document.getElementById("resetCancel");
 
@@ -338,7 +345,9 @@ adminTap=0;
 if(adminTap>=5){
 
 adminTap=0;
+countInfo.innerHTML=
 
+"🎉 現在 <b>"+drawCount+"</b> 人目";
 resetOverlay.style.display="flex";
 
 password.value="";
